@@ -14,7 +14,11 @@ const MathColor = (c1: Color) => {
 };
 
 const ReverseMathColor = (c1: Color) => {
-  return { r: c1.r * 255, g: c1.g * 255, b: c1.b * 255 };
+  return {
+    r: Math.ceil(c1.r * 255),
+    g: Math.ceil(c1.g * 255),
+    b: Math.ceil(c1.b * 255)
+  };
 };
 
 const Screen = (c1: Color, c2: Color) => {
@@ -74,13 +78,30 @@ export default function App() {
     );
     p.fill(resultColor.r, resultColor.g, resultColor.b);
     p.rect(
-      p.windowWidth / 1.5,
+      GetPositionFromColumn(p, 7),
       p.height / 2,
       DefalutRectSize(p),
       DefalutRectSize(p)
     );
-    p.fill("#000");
 
+    // rgb text
+    p.fill("#000");
+    p.textSize(p.width / 40);
+    p.text(
+      `(${data[0].Color1.r},${data[0].Color1.g},${data[0].Color1.b})`,
+      GetPositionFromColumn(p, 2),
+      GetPositionFromRow(p, 4)
+    );
+    p.text(
+      `(${data[0].Color2.r},${data[0].Color2.g},${data[0].Color2.b})`,
+      GetPositionFromColumn(p, 4),
+      GetPositionFromRow(p, 4)
+    );
+    p.text(
+      `(${resultColor.r},${resultColor.g},${resultColor.b})`,
+      GetPositionFromColumn(p, 7),
+      GetPositionFromRow(p, 4)
+    );
     p.text("×", GetPositionFromColumn(p, 3), p.height / 2);
     p.text("=", GetPositionFromColumn(p, 5.5), p.height / 2);
   };
