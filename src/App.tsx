@@ -54,6 +54,7 @@ export default function App() {
     p.rectMode(p.CENTER);
     p.textAlign(p.CENTER, p.CENTER);
     p.textSize(p.width / 20);
+    p.textFont("Arial");
   };
   const draw = (p: p5Types) => {
     p.background(255, 255, 255);
